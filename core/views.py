@@ -43,9 +43,27 @@ def signupview(request):
 
 @login_required
 def newItemview(request):
-    form = NewItemForm()
+    if request.method == 'POST':
+        form1 = NewItemForm(request.POST, request.FILES)
+
+        if form1.is_valid():
+            meti = form1.save(commit=False)
+            meti.created_by = request.user
+            meti.save()
+
+            return redirect('detail', pk=meti.id)
+    else:
+        form = NewItemForm()
 
     return render(request, 'core/form.html',{
         'form': form,
         'title': 'New item',
+    })
+
+
+
+def dashboardView(request):
+    items= Item.objects.filter(created_by=request.user)
+    return render(request, 'core/dashboard.html', {
+        'items': items,
     })
