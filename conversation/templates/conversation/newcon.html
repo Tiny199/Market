@@ -1,13 +1,12 @@
 {% extends 'core/base.html' %}
 
 {% block title %}
-{{title}}
+New Conversation
 {% endblock %}
 
 {% block content %}
- <h1 class="mb-6 text-3xl">{{title}}</h1>
-
-<form method="post" action="." enctype="multipart/form-data">
+<h1 class="mb-6 text-3xl">New Conversation</h1>
+<form method="post" action=".">
     {% csrf_token %}
     <div class="space-y-4">
         {{form.as_p}}
@@ -21,6 +20,6 @@
             {{form.non_field_errors}}
       </div>
     {% endif %}
-    <button class="mt-6 py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">ثبت</button>
+    <button class="mt-6 py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">ارسال</button>
 </form>
 {% endblock %}

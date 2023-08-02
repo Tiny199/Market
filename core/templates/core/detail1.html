@@ -18,7 +18,17 @@
             <strong class="text-gray-500" > :توضیحات </strong><br>{{item.description}}
         </p>
         {% endif %}
-        <a href="#" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">ارتباط با فروشنده</a>
+
+        {% if request.user == item.created_by %}
+        <div class="mt-4 p-2 bg-white rounded-xl">
+        <a href="{% url 'edit' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl" >ویرایش</a>
+
+        <a href="{% url 'delete' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl"> حذف</a>
+        </div>
+        {% else %}
+
+        <a href="{% url 'newconversation' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700 ">ارتباط با فروشنده</a>
+        {% endif %}
     </div>
 </div>
 <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">

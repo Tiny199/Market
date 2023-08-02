@@ -12,10 +12,10 @@
 
         <div class="space-x-6">
             <a href="{% url 'new-item' %}" class="text-lg font-semibold hover:text-gray-500">new item</a>
-            <a href="#" class="text-lg font-semibold hover:text-gray-500">Browse</a>
+            <a href="{% url 'search' %}" class="text-lg font-semibold hover:text-gray-500">Browse</a>
             {% if request.user.is_authenticated %}
-                <a href="#" class="px-6 py-3 text-lg font-semibild bg-teal-500 text-white rounded-xl hover:bg-teal-700">پیامهای دریافتی</a>
-                <a href="#"  class="px-6 py-3 text-lg font-semibild bg-gray-500 text-white rounded-xl hover:bg-gray-700">داشبورد</a>
+                <a href="{% url 'inbox' %}" class="px-6 py-3 text-lg font-semibild bg-teal-500 text-white rounded-xl hover:bg-teal-700">پیامهای دریافتی</a>
+                <a href="{% url 'dashboard' %}"  class="px-6 py-3 text-lg font-semibild bg-gray-500 text-white rounded-xl hover:bg-gray-700">داشبورد</a>
             {% else %}
                 <a href="{% url 'sign-up' %}" class="px-6 py-3 text-lg font-semibild bg-teal-500 text-white rounded-xl hover:bg-teal-700">ثبت نام</a>
                 <a href="{% url 'login' %}"  class="px-6 py-3 text-lg font-semibild bg-gray-500 text-white rounded-xl hover:bg-gray-700">ورود</a>
